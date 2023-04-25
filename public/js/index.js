@@ -1,5 +1,6 @@
 /* eslint-disable */
-
+import 'core-js/stable';
+import '@babel/polyfill';
 import { displayMap } from './leaflet';
 import { login, logout } from './login';
 import { signUp } from './signup';
