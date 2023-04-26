@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const enforce = require('express-sslify');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -20,6 +21,8 @@ const viewRouter = require('./routes/viewRouter');
 // Start express app
 // Checking git
 const app = express();
+
+app.use(enforce.HTTPS());
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
