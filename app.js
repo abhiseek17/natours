@@ -22,7 +22,13 @@ const viewRouter = require('./routes/viewRouter');
 // Checking git
 const app = express();
 
-app.use(enforce.HTTPS());
+app.use(
+  enforce.HTTPS({
+    trustProtoHeader: true,
+    trustXForwardedHostHeader: true,
+    trustAzureHeader: true,
+  })
+);
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
